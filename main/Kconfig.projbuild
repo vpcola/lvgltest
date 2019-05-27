@@ -1,0 +1,63 @@
+menu "LVGL Test"
+
+choice LVGL_SPI_HOST
+    prompt "Choose the SPI Host to use"
+    default LVGL_SPI_HSPI
+
+    config LVGL_SPI_HSPI
+    	bool "HSPI"
+    config LVGL_SPI_VSPI
+        bool "VSPI"
+endchoice
+
+config LVGL_SPI_MISO
+    int "MISO Pin"
+    default 19
+    range 0 33
+    help 
+	GPIO number for the SPI Miso Pin
+
+config LVGL_SPI_MOSI
+    int "MOSI Pin"
+    default 23
+    range 0 33
+    help 
+	GPIO number for the SPI Mosi Pin
+
+config LVGL_SPI_SCLK
+    int  "SCK Pin"
+    default 18
+    range 0 33
+    help
+       GPIO number for the SPI SCLK Pin
+
+menu "I2C Master"
+
+config I2C_MASTER_SCL
+    int "SCL GPIO Num"
+    default 22 
+    help
+        GPIO number for I2C Master clock line.
+
+config I2C_MASTER_SDA
+    int "SDA GPIO Num"
+    default 21
+    help
+        GPIO number for I2C Master data line.
+
+config I2C_MASTER_PORT_NUM
+    int "Port Number"
+    default 0
+    help
+        Port number for I2C Master device.
+
+config I2C_MASTER_FREQUENCY
+    int "Master Frequency"
+    default 100000
+    help
+        I2C Speed of Master device.
+endmenu
+
+endmenu
+
+
